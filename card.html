@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colosseum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-3 lg:grid-cols-3">
+        <!-- 데이터를 반복해서 카드로 생성합니다 -->
+        <div th:each="cardData : ${cardList}" class="card">
+            <h2 th:text="${cardData.title}">Card Title</h2>
+            <p th:text="${cardData.description}">Card Description</p>
+            <!-- 필요한 다른 카드 내용을 추가하세요 -->
+        </div>
+    </div>
+</body>
+</html>
