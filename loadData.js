@@ -21,8 +21,10 @@ function getUserInfo(kakaoId){
         if (xhr.status == 200) {
             console.log("success ! !");
             const data = JSON.parse(xhr.response);
-            document.querySelector('#nor').innerHTML(''+data['nor']); //댓글 수 기입
-            document.querySelector('#nov').innerHTML(''+data['nov']); //투표 수 기입
+            if(data['nor'] != null && data['nov'] != null){
+                document.querySelector('#nor').innerHTML = ''+data['nor']; //댓글 수 기입
+                document.querySelector('#nov').innerHTML = ''+data['nov']; //투표 수 기입
+            }
         } else {
             console.log("fail ! !");
         }

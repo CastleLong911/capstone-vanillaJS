@@ -1,13 +1,13 @@
 function createCard(data, deadline, dday) {
     console.log(data)
     return `
-    <div class="${dday[1] == '+' ? 'blur-sm ' : ' '}w-full card" topic-id="${data.roomId}" onclick="window.location.href='topicRoom?roomId='+'${data.roomId}'">
+    <div class="w-full card" topic-id="${data.roomId}" onclick="window.location.href='topicRoom?roomId='+'${data.roomId}'">
 
     <div class="w-full h-64 bg-gray-300 rounded-lg dark:bg-gray-600 flex items-center">
       <div class="w-full h-64 bg-white dark:bg-zinc-800 h-52 rounded-lg">
         <div class="flex flex-col items-center justify-evenly h-full p-3">
           <h4 class="text-xl font-bold text-navy-700 text-black dark:text-white  text-center mt-3 w-full">
-            ${data.topic}
+          ${dday[1] == '+' ? '(만료)' : ''}${data.topic}
           </h4>
           <div class="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700">
             <div class="h-6 bg-blue-600 rounded-full dark:bg-blue-500" style="width: ${data.pros == 0 ? '0' : (data.pros / (data.pros + data.cons) * 100).toFixed(2)}%;"></div>
@@ -19,7 +19,7 @@ function createCard(data, deadline, dday) {
             </div>
             <div class="flex flex-col items-center justify-center">
               <p class="text-2xl font-bold text-navy-700 text-black dark:text-white whitespace-nowrap">
-                ${(data.pros / (data.pros + data.cons) * 100).toFixed(2)}%
+                ${data.pros == 0 ? '0' : (data.pros / (data.pros + data.cons) * 100).toFixed(2)}%
               </p>
               <p class="text-sm font-normal text-gray-600 dark:text-white whitespace-nowrap">찬성</p>
             </div>
@@ -45,9 +45,15 @@ function createCard(data, deadline, dday) {
 
 // 생성할 데이터 배열
 const dataItems = [
-    { topicId: 'ABCD', topic: 'topic 1', reply: 1234, pros: 232, cons: 123, population: 2, date: '2023-11-25', period: 15 },
-    { topicId: 'EFGH', topic: 'topic 2', reply: 124, pros: 0, cons: 82, population: 3, date: '2023-11-21', period: 12 },
-    { topicId: 'IJKL', topic: 'topic 3', reply: 12324, pros: 9312, cons: 1243, population: 1, date: '2023-11-23', period: 1 },
+    { topicId: 'ABCD', topic: '짬뽕이 짜장보다 맛있다?', reply: 1234, pros: 232, cons: 123, date: '2023-11-25', period: 15 },
+    { topicId: 'EFGH', topic: '민트초코는 치약이다', reply: 12404, pros: 8201, cons: 1741, date: '2023-11-21', period: 12 },
+    { topicId: 'IJKL', topic: '공매도 금지는 적절한 판단인가?', reply: 6214, pros: 3006, cons: 2120, date: '2023-11-10', period: 10 },
+    { topicId: 'ABCD', topic: '외주작업에 남성차별.. 적절한 행동인가', reply: 2410, pros: 675, cons: 1520, date: '2023-11-26', period: 5 },
+    { topicId: 'EFGH', topic: '동물원의 윤리적 문제.. 동물원 폐지해야하나', reply: 306, pros: 102, cons: 160, date: '2023-11-21', period: 12 },
+    { topicId: 'IJKL', topic: '원자력 발전소는 괜찮은가', reply: 8065, pros: 4780, cons: 2146, date: '2023-11-10', period: 10 },
+    { topicId: 'ABCD', topic: '증가하는 난민. 한국의 난민 수용', reply: 1234, pros: 0, cons: 123, date: '2023-11-25', period: 15 },
+    { topicId: 'EFGH', topic: '사형제도의 부활', reply: 12404, pros: 8201, cons: 1741, date: '2023-11-21', period: 12 },
+    { topicId: 'IJKL', topic: '여성징병제', reply: 12324, pros: 9312, cons: 1243, date: '2023-11-10', period: 10 },
 ];
 
 
